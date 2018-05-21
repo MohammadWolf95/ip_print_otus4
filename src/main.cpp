@@ -10,8 +10,6 @@ int main(int argc, char *argv[])
     ip_print(static_cast<int>(2130706433));
     ip_print(static_cast<long>(8875824491850138409));
 
-    
-
     string str = "10.54.6.1";
     ip_print(str);
 
