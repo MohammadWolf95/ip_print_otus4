@@ -5,121 +5,59 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <algorithm>
+#include <string>
 
 using namespace std;
 
 /**
- * @brief Print ip address type char
- *
- * @param t - ip-address type T (char)
- *
- * @return nothing to return
- */
+* @file util.h
+* @brief this header file will contain all required
+* definitions and basic utilities functions.
+*
+* @author Dr.Zhao Zhang
+*
+* @date 2/28/2009
+*/
 
-template <class T, class U = void>
-typename enable_if<is_same<char, T>::value, U>::type
-ip_print(T t){
-    cout<<"255"<<endl;
-}
+template<typename ...>
+using to_void = void; // maps everything to void, used in non-evaluated contexts
 
+template<typename T, typename = void>
+struct is_container : std::false_type
+{};
 
-/**
- * @brief Print ip address type short
- *
- * @param t - ip-address type T (short)
- *
- * @return nothing to return
- */
-
-template <class T, class U = void>
-typename enable_if<is_same<short, T>::value, U>::type
-ip_print(T t){
-    cout<<"0.0"<<endl;
-}
+template<typename T>
+struct is_container<T,
+        to_void<decltype(std::declval<T>().begin()),
+                decltype(std::declval<T>().end()),
+                typename T::value_type
+        >> : std::true_type // will  be enabled for iterable objects
+{};
 
 
-/**
- * @brief Print ip address type int
- *
- * @param t - ip-address type T (int)
- *
- * @return nothing to return
- */
-
-template <class T, class U = void>
-typename enable_if<is_same<int, T>::value, U>::type
-ip_print(T t){
-    cout<<"127.0.0.1"<<endl;
-}
-
-
-/**
- * @brief Print ip address type long
- *
- * @param t - ip-address type T (long)
- *
- * @return nothing to return
- */
-
-template <class T, class U = void>
-typename enable_if<is_same<long, T>::value, U>::type
-ip_print(T t){
-    cout<<"123.45.67.89.101.112.131.41"<<endl;
-}
-
-
-/**
- * @brief Print ip address type string
- *
- * @param t - ip-address type T (string)
- *
- * @return nothing to return
- */
-
-template <class T, class U = void>
-typename enable_if<is_same<string, T>::value, U>::type
-ip_print(T t){
-    cout<<t;
-    cout<<endl;
-}
-
-
-/**
- * @brief Print ip address type vector<int>
- *
- * @param t - ip-address type T (vector<int>)
- *
- * @return nothing to return
- */
-
-template <class T, class U = void>
-typename enable_if<is_same<vector<int>, T>::value, U>::type
-ip_print(T t){
-    cout<<*t.begin();
-    for(auto i = t.begin()+1;i!=t.end();++i){
-        cout<<'.'<<*i;
+template <typename T>
+typename enable_if<!is_container<T>::value, void>::type
+print_ip(T ip){
+    auto size = sizeof(ip);
+    vector<int> bytes(size);
+    for(auto i = 0;i<size;++i){
+        bytes[i] = (ip >> (8 * i)) & 0xFF;
     }
-    cout<<endl;
+    reverse(bytes.begin(), bytes.end());
+    for(auto it = bytes.begin();it!=bytes.end();++it){
+        if(it==(bytes.end()-1)){
+            cout<<*it<<endl;
+            break;
+        }
+        cout<<*it<<'.';
+    }
 }
 
-
-/**
- * @brief Print ip address type list<int>
- *
- * @param t - ip-address type T (list<int>)
- *
- * @return nothing to return
- */
-
-template <class T, class U = void>
-typename enable_if<is_same<list<int>, T>::value, U>::type
-ip_print(T t){
-    vector<int>vec(t.begin(), t.end());
-    cout<<*vec.begin();
-    for(auto i = vec.begin()+1;i!=vec.end();++i){
-        cout<<'.'<<*i;
-    }
-    cout<<endl;
+template <typename T>
+typename enable_if<is_container<T>::value, void>::type
+print_ip(T ip){
+    cout<<"is container";
 }
 
 #endif // IP_CONFIG_H
