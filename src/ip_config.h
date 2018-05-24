@@ -11,14 +11,11 @@
 using namespace std;
 
 /**
-* @file util.h
-* @brief this header file will contain all required
-* definitions and basic utilities functions.
-*
-* @author Dr.Zhao Zhang
-*
-* @date 2/28/2009
-*/
+ * @file
+ * @brief функция возвращает бла-бла
+ * @param параметр - это
+ *
+ */
 
 template<typename ...>
 using to_void = void;
