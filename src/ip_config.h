@@ -21,7 +21,7 @@ using namespace std;
 */
 
 template<typename ...>
-using to_void = void; // maps everything to void, used in non-evaluated contexts
+using to_void = void;
 
 template<typename T, typename = void>
 struct is_container : std::false_type
@@ -32,7 +32,7 @@ struct is_container<T,
         to_void<decltype(std::declval<T>().begin()),
                 decltype(std::declval<T>().end()),
                 typename T::value_type
-        >> : std::true_type // will  be enabled for iterable objects
+        >> : std::true_type
 {};
 
 
@@ -55,9 +55,23 @@ print_ip(T ip){
 }
 
 template <typename T>
-typename enable_if<is_container<T>::value, void>::type
+typename enable_if<is_container<T>::value&&!is_same<T, string>::value, void>::type
 print_ip(T ip){
-    cout<<"is container";
+    auto ip_end_it = ip.end();
+    advance(ip_end_it, -1);
+    for(auto it = ip.begin();it!=ip.end();++it){
+        if(it == ip_end_it){
+            cout<<*it<<endl;
+            break;
+        }
+        cout<<*it<<'.';
+    }
+}
+
+template <typename T>
+typename enable_if<is_same<T, string>::value, void>::type
+print_ip(T ip){
+    cout<<ip<<endl;
 }
 
 #endif // IP_CONFIG_H
