@@ -41,6 +41,6 @@ set(CPACK_PACKAGE_CONTACT abdulvadudovmagomed@mail.ru)
 
 include(CPack)
 
-enable_testing()
+#enable_testing()
 
 add_test(test_ip_valid test_ip_print)
