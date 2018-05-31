@@ -10,15 +10,12 @@
 
 using namespace std;
 
-/**
- * @file
- * @brief функция возвращает бла-бла
- * @param параметр - это
- *
- */
-
 template<typename ...>
 using to_void = void;
+
+/**
+ * @file ip_config.h
+ */
 
 template<typename T, typename = void>
 struct is_container : std::false_type
@@ -32,6 +29,10 @@ struct is_container<T,
         >> : std::true_type
 {};
 
+/**
+ * @brief Этот шаблон использутся для фундаментальных типов
+ * @param ip - это переменная фундаментального типа
+ */
 
 template <typename T>
 typename enable_if<!is_container<T>::value, void>::type
@@ -51,6 +52,11 @@ print_ip(T ip){
     }
 }
 
+/**
+ * @brief Этот шаблон для контейнеров
+ * @param ip - это контейнер
+ */
+
 template <typename T>
 typename enable_if<is_container<T>::value&&!is_same<T, string>::value, void>::type
 print_ip(T ip){
@@ -64,6 +70,11 @@ print_ip(T ip){
         cout<<*it<<'.';
     }
 }
+
+/**
+ * @brief Этот шаблон для string-переменных
+ * @param ip - это переменная типа string
+ */
 
 template <typename T>
 typename enable_if<is_same<T, string>::value, void>::type
