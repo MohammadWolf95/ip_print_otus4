@@ -1,6 +1,6 @@
 #include "../src/ip_config.h"
 
-#define BOOST_TEST_MODULE test_ip_print
+#define BOOST_TEST_MODULE IpTest
 #include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
 using namespace std;
