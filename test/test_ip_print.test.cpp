@@ -5,7 +5,7 @@
 #include <boost/test/output_test_stream.hpp>
 using namespace std;
 
-BOOST_AUTO_TEST_SUITE(test_ip_output)
+//BOOST_AUTO_TEST_SUITE(test_ip_output)
 
 BOOST_AUTO_TEST_CASE(test_ip_type){
 	print_ip(char(-1));
@@ -14,4 +14,4 @@ BOOST_AUTO_TEST_CASE(test_ip_type){
 	BOOST_CHECK( output.is_equal( "255\n" ) );
 }
 
-BOOST_AUTO_TEST_SUITE_END()
+//BOOST_AUTO_TEST_SUITE_END()
