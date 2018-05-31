@@ -12,7 +12,7 @@ configure_file(version.h.in version.h)
 
 add_executable(ip_print ${SOURCE_PATH}/main.cpp)
 
-add_library()
+#add_library()
 
 #add_executable(test_ip_print ${TEST_PATH}/test_ip_print.cpp)
 
