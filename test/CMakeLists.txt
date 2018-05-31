@@ -1,7 +1,7 @@
 if(BUILD_TESTING)
 	find_package (Boost COMPONENTS unit_test_framework REQUIRED)
 	
-	add_executable(ip_test test_ip_print.cpp)
+	add_executable(ip_test test_ip_print.test.cpp)
 
 	set_target_properties(ip_test PROPERTIES
 		CXX_STANDARD 14
