@@ -1,8 +1,9 @@
-#include "../src/ip_config.h"
-
 #define BOOST_TEST_MODULE IpTest
 #include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+
+#include "../src/ip_config.h"
+
 using namespace std;
 
 //BOOST_AUTO_TEST_SUITE(test_ip_output)
