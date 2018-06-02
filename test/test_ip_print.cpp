@@ -23,9 +23,9 @@ private:
 
 int add( int i, int j ) { return i+j; }
 
-BOOST_AUTO_TEST_CASE(test_ip_type){
+boost::test_tools::output_test_stream output;
 
-	boost::test_tools::output_test_stream output;
+BOOST_AUTO_TEST_CASE(test_ip_type){
 	{
 		cout_redirect guard( output.rdbuf( ) );
 		print_ip(char(-1));
@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(test_ip_type){
 }
 
 BOOST_AUTO_TEST_CASE(test_ip_container){
-	//output;
+	output;
 	BOOST_CHECK_EQUAL( add( 2,2 ), 4 );
 }
 
