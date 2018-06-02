@@ -41,6 +41,7 @@ BOOST_AUTO_TEST_CASE(test_ip_type){
 }
 
 BOOST_AUTO_TEST_CASE(test_ip_container){
+	output.flush();
 	vector<int> ip_vec = {14,1,5,6};
     list<short> ip_list = {14,45,5,6};
     string ip_string = "140.1.5.6";
@@ -48,10 +49,9 @@ BOOST_AUTO_TEST_CASE(test_ip_container){
     print_ip(ip_list);
     print_ip(ip_string);
 
-	BOOST_CHECK( output.is_equal( 	"255\n"
-									"0.0\n"
-									"127.0.0.1\n"
-									"123.45.67.89.101.112.131.41\n" ) );
+	BOOST_CHECK( output.is_equal( 	"14.1.5.6\n"
+									"14.45.5.6\n"
+									"140.1.5.6\n" ) );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
