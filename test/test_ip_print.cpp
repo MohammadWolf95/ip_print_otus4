@@ -6,7 +6,7 @@
 
 using namespace std;
 
-//BOOST_AUTO_TEST_SUITE(test_ip_output)
+BOOST_AUTO_TEST_SUITE(test_ip_output)
 
 int add( int i, int j ) { return i+j; }
 
@@ -18,4 +18,4 @@ BOOST_AUTO_TEST_CASE(test_ip_type){
 	BOOST_CHECK_EQUAL( add( 2,2 ), 4 );
 }
 
-//BOOST_AUTO_TEST_SUITE_END()
+BOOST_AUTO_TEST_SUITE_END()
