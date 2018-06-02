@@ -21,6 +21,8 @@ private:
     std::streambuf * old;
 };
 
+int add( int i, int j ) { return i+j; }
+
 BOOST_AUTO_TEST_CASE(test_ip_type){
 
 	boost::test_tools::output_test_stream output;
@@ -36,6 +38,10 @@ BOOST_AUTO_TEST_CASE(test_ip_type){
 									"0.0\n"
 									"127.0.0.1\n"
 									"123.45.67.89.101.112.131.41\n" ) );
+}
+
+BOOST_AUTO_TEST_CASE(test_ip_type){
+	BOOST_CHECK_EQUAL( add( 2,2 ), 4 );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
