@@ -50,5 +50,5 @@ include(CPack)
 
 enable_testing()
 
-add_subdirectory(test)
+#add_subdirectory(test)
 #add_test(test_ip_valid test_ip_print)
