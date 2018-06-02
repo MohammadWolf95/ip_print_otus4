@@ -1,5 +1,5 @@
-sdfdfas
 if(BUILD_TESTING)
+	sdfdf
 	find_package (Boost COMPONENTS unit_test_framework REQUIRED)
 	
 	add_executable(ip_test test_ip_print.cpp)
