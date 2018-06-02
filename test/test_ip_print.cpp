@@ -54,8 +54,6 @@ BOOST_AUTO_TEST_CASE(test_ip_container){
 	BOOST_CHECK( output.is_equal( 	"14.1.5.6\n"
 									"14.45.5.6\n"
 									"140.1.5.6\n" ) );
-
-	//BOOST_CHECK( output.is_equal( 	"" ) );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
