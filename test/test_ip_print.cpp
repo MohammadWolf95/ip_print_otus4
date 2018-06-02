@@ -27,9 +27,15 @@ BOOST_AUTO_TEST_CASE(test_ip_type){
 	{
 		cout_redirect guard( output.rdbuf( ) );
 		print_ip(char(-1));
+		print_ip(short(0));
+    	print_ip(int(2130706433));
+    	print_ip(long(8875824491850138409));
 	}
 
-	BOOST_CHECK( output.is_equal( "25\n" ) );
+	BOOST_CHECK( output.is_equal( 	"255\n"
+									"0.0\n"
+									"127.0.0.1\n"
+									"123.45.67.89.101.112.131.41\n" ) );
 }
 
 BOOST_AUTO_TEST_SUITE_END()
