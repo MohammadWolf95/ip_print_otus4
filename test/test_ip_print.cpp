@@ -8,12 +8,14 @@ using namespace std;
 
 BOOST_AUTO_TEST_SUITE(test_ip_output)
 
-int add( int i, int j ) { return i+j; }
-
 BOOST_AUTO_TEST_CASE(test_ip_type){
-	print_ip(char(-1));
 
 	boost::test_tools::output_test_stream output;
+
+	{
+		print_ip(char(-1));
+	}
+
 	BOOST_CHECK( output.is_equal( "255\n" ) );
 }
 
