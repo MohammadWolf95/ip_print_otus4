@@ -10,9 +10,9 @@ find_package(Boost COMPONENTS unit_test_framework REQUIRED)
 
 configure_file(version.h.in version.h)
 
-add_executable(ip_print ${
-				SOURCE_PATH}/main.cpp
-				SOURCE_PATH}/ip_config.h)
+add_executable(ip_print 
+				${SOURCE_PATH}/main.cpp
+				${SOURCE_PATH}/ip_config.h)
 
 #add_library()
 
