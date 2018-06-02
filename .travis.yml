@@ -9,18 +9,23 @@ install:
 # C++14
 - sudo apt-get install -qq g++-6
 - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-6 90
+- sudo apt-get install -y -qq graphviz doxygen libboost-test1.54-dev
 before_script:
 - sudo apt-get install libboost-test-dev -y
 script:
-# Install Boost Test Framework 1.54
-#- sudo apt-get install -y -qq libboost-test1.54-dev
-#- cmake -DCMAKE_BUILD_TYPE=Release .
 - cmake -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Release .
 - cmake .
 - cmake --build .
 - cmake --build . --target test
 - cmake --build . --target package
+- doxygen Doxyfile
 deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep-history: true
+  on:
+    branch: master
   provider: script
   skip_cleanup: true
   script:
