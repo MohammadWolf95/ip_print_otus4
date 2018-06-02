@@ -13,6 +13,6 @@ if(BUILD_TESTING)
   		LINK_LIBRARIES ${Boost_LIBRARIES}
 	)
 
-	add_test(IpTest ip_test)
+	add_test(test_ip_type ip_test)
 
 endif()
