@@ -1,4 +1,3 @@
-sdf
 if(BUILD_TESTING)
 	find_package (Boost COMPONENTS unit_test_framework REQUIRED)
 	
@@ -11,7 +10,7 @@ if(BUILD_TESTING)
 		COMPILE_DEFINITIONS BOOST_TEST_DYN_LINK
   		INCLUDE_DIRECTORIES ${Boost_INCLUDE_DIR}
   		INCLUDE_DIRECTORIES ${SOURCE_PATH}
-  		LINK_LIBRARIES ${Boost_LIBRARIES}dfgdg
+  		LINK_LIBRARIES ${Boost_LIBRARIES}
 	)
 
 	add_test(IpTest ip_test)
