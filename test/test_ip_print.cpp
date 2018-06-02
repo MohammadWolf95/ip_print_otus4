@@ -41,7 +41,7 @@ BOOST_AUTO_TEST_CASE(test_ip_type){
 }
 
 BOOST_AUTO_TEST_CASE(test_ip_container){
-	output;
+	//output;
 	BOOST_CHECK_EQUAL( add( 2,2 ), 4 );
 }
 
