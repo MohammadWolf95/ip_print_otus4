@@ -15,6 +15,7 @@ script:
 # Install Boost Test Framework 1.54
 #- sudo apt-get install -y -qq libboost-test1.54-dev
 #- cmake -DCMAKE_BUILD_TYPE=Release .
+- cmake -DBUILD_TESTING=ON -DCMAKE_BUILD_TYPE=Release .
 - cmake .
 - cmake --build .
 - cmake --build . --target test
