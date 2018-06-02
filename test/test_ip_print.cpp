@@ -40,7 +40,7 @@ BOOST_AUTO_TEST_CASE(test_ip_type){
 									"123.45.67.89.101.112.131.41\n" ) );
 }
 
-BOOST_AUTO_TEST_CASE(test_ip_type){
+BOOST_AUTO_TEST_CASE(test_ip_container){
 	BOOST_CHECK_EQUAL( add( 2,2 ), 4 );
 }
 
