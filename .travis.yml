@@ -20,15 +20,14 @@ script:
 - cmake --build . --target package
 - doxygen Doxyfile
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep-history: true
-  local-dir: html
-  on:
-    branch: master
   provider: script
   skip_cleanup: true
   script:
   - curl -T ip_print-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -umohammadwolf95:$BINTRAY_API_KEY "https://api.bintray.com/content/mohammadwolf95/ip_print/ip_print/$TRAVIS_BUILD_NUMBER/ip_print-0.0.$TRAVIS_BUILD_NUMBER-Liux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
- 
+  - provider: pages
+    skip-cleanup: true
+    github-token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+    keep-history: true
+    local-dir: html
+    on:
+      branch: master
